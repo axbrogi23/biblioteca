@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca App Mockup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<link rel="stylesheet" href="animations.css">
+<script src="search.js"></script>
+<script src="ratings.js"></script>
+<body>
+    <div class="app-container">
+
+        <!-- Pantalla de Registrarse -->
+        <div id="pantalla-registrarse" class="screen active">
+            <header>
+                <h1>LETRAS Y SUEÑOS</h1>
+            </header>
+            <main>
+                <img src="imagenes_mockups/logo_biblioteca.png" alt="Logo Letras y Sueños" class="login-logo"> 
+                <h2>Crear una cuenta</h2>
+                <p>Entre con su email o regístrese para ingresar</p>
+                <input type="email" placeholder="email@domain.com">
+                <button id="btn-registrarse" class="btn-primary">Registrarse</button>
+                <div class="social-login">
+                    <button id="google-login-btn" class="btn-social">
+                        <img src="imagenes_mockups/google_logo.png" alt="Google logo" style="width: 20px; height: 20px; margin-right: 8px;">
+                        Continuar con Google
+                
+                    </button>
+                    <!-- 1. Agrega un id al botón de Apple -->
+                    <button id="apple-login-btn" class="btn-social">
+                        <img src="imagenes_mockups/gratis-png-logo-de-apple-logo-de-animal-haven-apple-iphone-logo-de-apple-thumbnail.png" alt="Apple logo" style="width: 20px; height: 20px; margin-right: 8px;">
+                        Continuar con Apple
+                    </button>
+                </div>
+            </main>
+            <footer>
+                <p>¿Ya tienes una cuenta? <a href="login.html" target="_blank">Iniciar sesión</a></p>
+                <p>
+                    Al registrarte, aceptas nuestros <a href="terminos.html" target="_blank">Términos de servicio</a> y <a href="privacidad.html" target="_blank">Política de privacidad</a>.
+                </p>
+
+                <!-- Asegúrate de que el enlace apunte a "ayuda.html" y tenga target="_blank" -->
+                <p style="text-align: center; margin-top: 16px;">
+                    <a href="ayuda.html" target="_blank">¿Necesitas ayuda? Contáctanos</a>
+                </p>
+            </footer>
+        </div>
+
+        <!-- Pantalla de Menú Principal -->
+        <div id="pantalla-menu" class="screen">
+            <header class="app-header">
+                <!-- Puedes mantener o quitar el botón de la izquierda si ya no es necesario -->
+                <!-- <button>...</button> --> 
+                <h2>BIBLIOTECA</h2> 
+                <!-- El ícono de búsqueda pequeño 'Q' se puede quitar si este input lo reemplaza -->
+            </header>
+            <main class="screen-main">
+                <!-- NUEVA UBICACIÓN PARA LA BARRA DE BÚSQUEDA -->
+                <div class="search-bar-container">
+                    <input type="search" id="menu-search-input" placeholder="Buscar libros por título, autor, género...">
+                </div>
+
+                <div class="tabs-container">
+                    <button class="tab-button active">Favoritos</button>
+                    <button class="tab-button">Historial</button>
+                    <button class="tab-button">Seguidos</button>
+                </div>
+                <div id="tab-content-area">
+                    <!-- El contenido de la pestaña activa se carga aquí -->
+                </div>
+            </main>
+            <nav class="bottom-nav">
+                <button id="btn-home" class="active">🏠</button>
+                <button id="btn-search">🔍</button>
+                <button id="btn-cart">🛒</button>
+                <button id="btn-profile">👤</button>
+            </nav>
+        </div>
+
+        <!-- Pantalla de Facturación -->
+        <div id="pantalla-facturacion" class="screen">
+            <header class="app-header">
+                <button onclick="navigateTo('pantalla-menu')">&lt;</button>
+                <h2>FACTURACIÓN</h2>
+            </header>
+            <main>
+                <div class="factura-detalle">
+                    <div class="detalle-item"><span>TIPO DE LIBRO</span> <span>FANTASIA ></span></div>
+                    <div class="detalle-item"><span>GÉNERO</span> <span>FICCIÓN ></span></div>
+                    <div class="detalle-item"><span>AUTOR</span> <span>C.S. LEWIS ></span></div>
+                    <div class="detalle-item"><span>NOMBRE ESTUDIANTE</span> <span>AXEL ></span></div>
+                </div>
+                <div class="items-factura">
+                    <h3>ITEMS</h3>
+                    <div class="item">
+                        <img src="imagenes_mockups/estuche-narnia.jpg" alt="Las Crónicas de Narnia">
+                        <div>
+                            <p>"LAS CRONICAS DE NARNIA"</p>
+                            <span>Cuatro hermanos descubren Narnia, un mundo mágico...</span>
+                        </div>
+                        <p>$10.00</p>
+                    </div>
+                </div>
+                <div class="totales">
+                    <div class="total-item"><span>Subtotal</span> <span>$10.00</span></div>
+                    <div class="total-item"><span>Envío total</span> <span>Free</span></div>
+                    <div class="total-item"><span>Multa</span> <span>$0.00</span></div>
+                    <hr>
+                    <div class="total-item grand-total"><span>Total</span> <span>$10.00</span></div>
+                </div>
+                <button class="btn-primary btn-ordenar">ORDENAR</button>
+            </main>
+        </div>
+
+        <!-- Pantalla de Perfil (Nueva) -->
+        <div id="pantalla-perfil" class="screen">
+            <header class="app-header">
+                <button onclick="navigateTo('pantalla-menu')">&lt;</button> <!-- Botón para volver al menú -->
+                <h2>MI PERFIL</h2>
+            </header>
+            <main>
+                <div class="profile-info">
+                    <img src="imagenes_mockups/profile_imagen.png" alt="Foto de perfil" class="profile-picture">
+                    <h3>AXEL</h3>
+                    <p>usuario@example.com</p>
+
+                    <a href="edit-profile.html" class="button-edit">Editar Perfil</a>
+                    <button class="button-logout">Cerrar Sesión</button>
+                </div>
+            </main>
+            <nav class="bottom-nav"> <!-- Repetir la navegación inferior para consistencia -->
+                <button id="btn-home-perfil">🏠</button>
+                <button id="btn-search-perfil">🔍</button>
+                <button id="btn-cart-perfil">🛒</button>
+                <button id="btn-profile-perfil" class="active">👤</button>
+            </nav>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+    
+    <!-- Script limpio para los botones de Google y Apple -->
+    <script>
+        document.getElementById('google-login-btn').addEventListener('click', function() {
+            const googleAuthUrl = 'https://accounts.google.com/'; 
+            window.open(googleAuthUrl, '_blank');
+        });
+
+        document.getElementById('apple-login-btn').addEventListener('click', function() {
+            const appleAuthUrl = 'https://appleid.apple.com/';
+            window.open(appleAuthUrl, '_blank');
+        });
+    </script>
+</body>
+</html>

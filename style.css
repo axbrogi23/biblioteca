@@ -1,0 +1,520 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    /* Puedes aumentar el tamaño de fuente base aquí */
+    font-size: 17px; /* Ejemplo: aumentado desde un posible 16px o 1em */
+    /* Si usabas 100% o 1em, puedes probar con 110% o 1.1em */
+}
+
+.app-container {
+    width: 100%;
+    max-width: 450px; /* Asumiendo que este es tu max-width actual */
+    min-height: 100vh;
+    margin: 0 auto; /* Para centrar el contenedor */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+}
+
+.screen {
+    display: none; /* Ocultar todas las pantallas por defecto */
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.screen.active {
+    display: flex; /* Mostrar la pantalla activa */
+}
+
+header, .app-header {
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: center;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-header button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.app-header h2 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 1.4em; /* Si el font-size base aumenta, esto también lo hará proporcionalmente */
+}
+
+
+#pantalla-registrarse header h1 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+#pantalla-registrarse main {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#pantalla-registrarse h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+#pantalla-registrarse p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#pantalla-registrarse input[type="email"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #000000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-social {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.social-login {
+    margin-top: 20px;
+}
+
+#pantalla-registrarse footer {
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Estilos para Menú de App */
+#pantalla-menu .app-header input[type="search"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 8px 10px;
+    cursor: pointer;
+    color: #777;
+}
+
+.tab-button.active {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+#pantalla-menu main {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#pantalla-menu h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.book-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Para scroll horizontal si hay muchos libros */
+    padding-bottom: 10px; /* Espacio para la barra de scroll si aparece */
+}
+
+.book-item {
+    min-width: 120px;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Para apilar imagen, texto y botón */
+    align-items: center; /* Centrar elementos si es necesario */
+}
+
+.book-item img {
+    width: 80px; /* Podrías querer aumentar esto un poco */
+    height: 110px; /* Y esto también, manteniendo la proporción */
+    object-fit: cover;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.book-item p {
+    font-size: 0.85em; /* Ajusta según el nuevo tamaño base */
+    font-weight: bold;
+    margin: 5px 0;
+    color: #555;
+}
+
+.book-item span {
+    font-size: 0.75em; /* Ajusta según el nuevo tamaño base */
+    color: #777;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.book-item .btn-facturar-libro {
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #007bff; /* Azul primario de ejemplo */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9em;
+    width: 100%; /* Ocupar el ancho del contenedor del libro */
+    box-sizing: border-box;
+}
+
+.book-item .btn-facturar-libro:hover {
+    background-color: #0056b3; /* Un azul más oscuro para el hover */
+}
+
+.book-item .btn-toggle-follow {
+    display: block;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: #6c757d; /* Un color secundario, gris */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.book-item .btn-toggle-follow:hover {
+    background-color: #5a6268;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Centra los íconos verticalmente si tienen alturas diferentes */
+    padding: 10px 0; /* Padding vertical dentro de la barra */
+    border-top: 1px solid #eee;
+    background-color: #ffffff; /* Fondo blanco sólido */
+    
+    /* Fijar la barra en la parte inferior */
+    position: fixed;
+    bottom: 0;
+    
+    /* Alinear con el .app-container si está centrado y tiene max-width */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; /* Ocupa el ancho disponible */
+    max-width: 450px; /* Mismo max-width que .app-container */
+    
+    z-index: 1000; /* Asegura que esté por encima de otro contenido */
+    box-sizing: border-box; /* Para que el padding y borde no aumenten el ancho total más allá de max-width */
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.8em; /* Tamaño de los íconos/botones */
+    cursor: pointer;
+    padding: 5px 15px; /* Ajusta el padding del botón si es necesario */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-nav button.active {
+    color: #007bff; /* O tu color activo */
+    /* border-bottom: 2px solid #007bff; /* Puedes quitar esto si la barra está fija abajo */
+}
+
+/* Estilos para Facturación */
+#pantalla-facturacion main {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.factura-detalle .detalle-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9em;
+}
+.factura-detalle .detalle-item span:last-child {
+    color: #555;
+}
+
+.items-factura {
+    margin-top: 20px;
+}
+.items-factura h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+.items-factura .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.items-factura .item img {
+    width: 60px; /* Más pequeño que en la lista de libros */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.items-factura .item div {
+    flex-grow: 1;
+}
+.items-factura .item p {
+    margin: 0;
+    font-size: 0.9em;
+}
+.items-factura .item span {
+    font-size: 0.8em;
+    color: #666;
+}
+.items-factura .item p:last-child { /* Precio */
+    font-weight: bold;
+}
+
+.totales {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.totales .total-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.totales hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 10px 0;
+}
+.totales .grand-total span {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.btn-ordenar {
+    margin-top: 20px;
+}
+
+.login-logo {
+    display: block;
+    margin: 20px auto; /* Centrar y dar espacio */
+    max-width: 150px; /* Ajusta según el tamaño de tu logo */
+    height: auto;
+}
+
+.btn-clear-history {
+    display: block; /* Para que ocupe su propia línea */
+    margin: 20px auto; /* Centrar y dar espacio vertical */
+    padding: 10px 15px;
+    background-color: #dc3545; /* Color rojo para acciones destructivas */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.btn-clear-history:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+}
+
+#pantalla-perfil main {
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-info .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+}
+
+.profile-info h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.profile-info p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.profile-info .btn-secondary,
+.profile-info .btn-danger {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 12px;
+    font-size: 1em;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.bottom-nav button.active { /* Estilo para el botón activo en la nav inferior */
+    color: #007bff; /* O el color que uses para indicar activación */
+    border-bottom: 2px solid #007bff; /* Ejemplo de indicador */
+}
+
+/* Estilos para la pantalla de Editar Perfil */
+#pantalla-editar-perfil main {
+    padding: 20px;
+}
+
+.profile-form .form-group {
+    margin-bottom: 15px;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="url"],
+.profile-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.profile-form .form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-form .form-actions button {
+    padding: 10px 15px;
+    flex-grow: 1; /* Para que los botones ocupen espacio similar */
+}
+
+.profile-form .form-actions button:first-child {
+    margin-right: 10px; /* Espacio entre botones */
+}
+
+/* Estilos para la pantalla de menú */
+#pantalla-menu .screen-main {
+    padding-bottom: 70px; /* Espacio alrededor del contenido principal */
+    /* El padding-bottom para la bottom-nav ya debería estar aquí */
+    /* padding-bottom: 70px; */ 
+    /* No es necesario añadir más padding aquí a menos que el header sea fijo y cubra contenido */
+}
+
+/* Contenedor de la barra de búsqueda en el menú */
+#pantalla-menu .search-bar-container {
+    padding: 10px 15px; /* Espacio alrededor de la barra de búsqueda */
+    background-color: #f0f0f0; /* Un color de fondo ligero si se desea */
+    /* border-bottom: 1px solid #e0e0e0; /* Opcional: un separador */
+}
+
+#pantalla-menu #menu-search-input {
+    width: 100%; /* Hace que la barra ocupe el ancho completo de su contenedor padre (.search-bar-container) */
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Bordes redondeados */
+    box-sizing: border-box; /* Importante para que el padding y borde no excedan el width: 100% */
+    display: block; /* Para que ocupe su propia línea y respete el width 100% */
+}
+
+#pantalla-menu #menu-search-input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Ajustes para el contenedor de pestañas si es necesario */
+#pantalla-menu .tabs-container {
+    display: flex;
+    justify-content: space-around; /* o space-between / flex-start */
+    background-color: #fff; /* O el color de fondo que prefieras para las pestañas */
+    padding: 0; /* Quitar padding si el search-bar-container ya lo tiene */
+    border-bottom: 1px solid #ddd; /* Separador debajo de las pestañas */
+}
+
+#pantalla-menu .tab-button {
+    padding: 12px 10px; /* Ajusta el padding de los botones de pestaña */
+    /* ... otros estilos de tab-button ... */
+}
+
+/* El área de contenido de la pestaña */
+#pantalla-menu #tab-content-area {
+    padding: 15px; /* Padding para el contenido dentro de las pestañas */
+}

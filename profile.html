@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; display: flex; justify-content: center; background-color: #f0f2f5; margin: 0; }
+        .container { background: white; width: 100%; max-width: 450px; text-align: center; padding: 20px; min-height: 100vh; box-sizing: border-box; }
+        .header { text-align: center; padding: 15px; border-bottom: 1px solid #dbdbdb; margin-bottom: 20px; }
+        .header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+        .profile-pic { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-top: 20px; }
+        .username { font-size: 22px; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+        .email { color: #8e8e8e; margin-bottom: 30px; }
+        .button { display: block; width: 100%; padding: 12px; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; text-decoration: none; box-sizing: border-box; margin-bottom: 10px; }
+        .button-edit { background-color: #efefef; border: 1px solid #dbdbdb; color: black; }
+        .button-logout { background-color: #e03140; border: none; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MI PERFIL</h1>
+        </div>
+        <!-- Cambia la URL de la imagen por la que desees -->
+        <img src="https://i.pravatar.cc/150" alt="Foto de Perfil" class="profile-pic">
+        <h2 class="username" id="profileUsername"></h2>
+        <p class="email" id="profileEmail"></p>
+        <a href="edit-profile.html" class="button button-edit">Editar Perfil</a>
+        <button class="button button-logout" id="logoutButton">Cerrar Sesión</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('userEmail');
+
+            if (username && email) {
+                // Aquí es donde se muestran los datos
+                document.getElementById('profileUsername').textContent = username;
+                document.getElementById('profileEmail').textContent = email;
+            } else {
+                window.location.href = 'index.html'; // Si no hay datos, vuelve al inicio
+            }
+
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                localStorage.clear(); // Limpia todos los datos al cerrar sesión
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

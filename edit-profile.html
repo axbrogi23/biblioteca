@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <style>
+        /* He añadido estilos básicos aquí para que funcione. 
+           Lo ideal es que los muevas a tu archivo CSS principal. */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 450px;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #dbdbdb;
+        }
+        .header a {
+            text-decoration: none;
+            color: black;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+            font-weight: 600;
+        }
+        .form-container {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .save-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e03140; /* Color rojo del botón de cerrar sesión */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html">&lt;</a>
+            <h1>EDITAR PERFIL</h1>
+        </div>
+        <div class="form-container">
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario</label>
+                    <input type="text" id="username" name="username" value="Usuario">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" value="usuario@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Nueva Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Deja en blanco para no cambiar">
+                </div>
+                <button type="submit" class="save-button">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

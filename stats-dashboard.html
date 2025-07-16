@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas - Letras y Sueños</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <button onclick="navigateTo('pantalla-perfil')">&lt;</button>
+            <h2>MIS ESTADÍSTICAS</h2>
+        </header>
+        
+        <main class="stats-main">
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-number" id="books-read">12</div>
+                    <div class="stat-label">Libros Leídos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="books-following">5</div>
+                    <div class="stat-label">Siguiendo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avg-rating">4.2</div>
+                    <div class="stat-label">Calificación Promedio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-spent">$89.50</div>
+                    <div class="stat-label">Total Gastado</div>
+                </div>
+            </div>
+            
+            <div class="reading-goal">
+                <h3>Meta de Lectura 2024</h3>
+                <div class="goal-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="goal-progress-bar"></div>
+                    </div>
+                    <div class="goal-text">
+                        <span id="goal-current">12</span> de <span id="goal-target">20</span> libros
+                    </div>
+                </div>
+                <button id="update-goal-btn" class="btn-secondary">Actualizar Meta</button>
+            </div>
+            
+            <div class="favorite-genres">
+                <h3>Géneros Favoritos</h3>
+                <div class="genre-chart">
+                    <div class="genre-bar">
+                        <div class="genre-name">Fantasía</div>
+                        <div class="genre-progress">
+                            <div class="genre-fill" style="width: 40%"></div>
+                        </div>
+                        <div class="genre-count">8 libros</div>
+                    </div>
+                    <div class="genre-bar">
+                        <div class="genre-name">Narrativa</div>
+                        <div class="genre-progress">
+                            <div class="genre-fill" style="width: 30%"></div>
+                        </div>
+                        <div class="genre-count">6 libros</div>
+                    </div>
+                    <div class="genre-bar">
+                        <div class="genre-name">Manga</div>
+                        <div class="genre-progress">
+                            <div class="genre-fill" style="width: 20%"></div>
+                        </div>
+                        <div class="genre-count">4 libros</div>
+                    </div>
+                    <div class="genre-bar">
+                        <div class="genre-name">No Ficción</div>
+                        <div class="genre-progress">
+                            <div class="genre-fill" style="width: 10%"></div>
+                        </div>
+                        <div class="genre-count">2 libros</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recent-activity">
+                <h3>Actividad Reciente</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">📚</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Reservaste "Las Crónicas de Narnia"</div>
+                            <div class="activity-date">hace 2 horas</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">⭐</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Calificaste "Don Quijote" con 5 estrellas</div>
+                            <div class="activity-date">hace 1 día</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">❤️</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Comenzaste a seguir "El Principito"</div>
+                            <div class="activity-date">hace 3 días</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="monthly-stats">
+                <h3>Estadísticas Mensuales</h3>
+                <div class="monthly-chart">
+                    <div class="month-bar">
+                        <div class="month-name">Ene</div>
+                        <div class="month-progress">
+                            <div class="month-fill" style="height: 60%"></div>
+                        </div>
+                        <div class="month-count">3</div>
+                    </div>
+                    <div class="month-bar">
+                        <div class="month-name">Feb</div>
+                        <div class="month-progress">
+                            <div class="month-fill" style="height: 80%"></div>
+                        </div>
+                        <div class="month-count">4</div>
+                    </div>
+                    <div class="month-bar">
+                        <div class="month-name">Mar</div>
+                        <div class="month-progress">
+                            <div class="month-fill" style="height: 40%"></div>
+                        </div>
+                        <div class="month-count">2</div>
+                    </div>
+                    <div class="month-bar">
+                        <div class="month-name">Abr</div>
+                        <div class="month-progress">
+                            <div class="month-fill" style="height: 100%"></div>
+                        </div>
+                        <div class="month-count">5</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <nav class="bottom-nav">
+            <button onclick="navigateTo('pantalla-menu')">🏠</button>
+            <button onclick="navigateTo('pantalla-menu')">🔍</button>
+            <button onclick="navigateTo('pantalla-menu')">🛒</button>
+            <button class="active">👤</button>
+        </nav>
+    </div>
+    
+    <script src="stats.js"></script>
+</body>
+</html>

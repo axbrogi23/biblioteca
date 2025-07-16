@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones - Letras y Sueños</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <button onclick="window.history.back()">&lt;</button>
+            <h2>NOTIFICACIONES</h2>
+            <button id="mark-all-read" class="btn-text">Marcar todas como leídas</button>
+        </header>
+        
+        <main class="notifications-main">
+            <div class="notification-tabs">
+                <button class="notification-tab active" data-tab="all">Todas</button>
+                <button class="notification-tab" data-tab="reminders">Recordatorios</button>
+                <button class="notification-tab" data-tab="recommendations">Recomendaciones</button>
+            </div>
+            
+            <div class="notifications-container">
+                <div id="all-notifications" class="notification-content active">
+                    <div class="notification-item unread">
+                        <div class="notification-icon">📚</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Recordatorio de devolución</div>
+                            <div class="notification-message">El libro "Las Crónicas de Narnia" debe ser devuelto mañana.</div>
+                            <div class="notification-time">hace 2 horas</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn-small">Renovar</button>
+                            <button class="btn-small btn-secondary">Devolver</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">⭐</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Nueva recomendación</div>
+                            <div class="notification-message">Basado en tu lectura de "Don Quijote", te recomendamos "El Ingenioso Hidalgo".</div>
+                            <div class="notification-time">hace 5 horas</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn-small">Ver libro</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">🎉</div>
+                        <div class="notification-content">
+                            <div class="notification-title">¡Meta alcanzada!</div>
+                            <div class="notification-message">Has leído 10 libros este mes. ¡Felicidades!</div>
+                            <div class="notification-time">hace 1 día</div>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">❤️</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Nuevo libro disponible</div>
+                            <div class="notification-message">Ya está disponible "El Principito" que tenías en tu lista de seguimiento.</div>
+                            <div class="notification-time">hace 2 días</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn-small">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="reminders-notifications" class="notification-content">
+                    <div class="notification-item unread">
+                        <div class="notification-icon">📚</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Recordatorio de devolución</div>
+                            <div class="notification-message">El libro "Las Crónicas de Narnia" debe ser devuelto mañana.</div>
+                            <div class="notification-time">hace 2 horas</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn-small">Renovar</button>
+                            <button class="btn-small btn-secondary">Devolver</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="recommendations-notifications" class="notification-content">
+                    <div class="notification-item">
+                        <div class="notification-icon">⭐</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Nueva recomendación</div>
+                            <div class="notification-message">Basado en tu lectura de "Don Quijote", te recomendamos "El Ingenioso Hidalgo".</div>
+                            <div class="notification-time">hace 5 horas</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn-small">Ver libro</button>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">❤️</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Nuevo libro disponible</div>
+                            <div class="notification-message">Ya está disponible "El Principito" que tenías en tu lista de seguimiento.</div>
+                            <div class="notification-time">hace 2 días</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn-small">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="notifications.js"></script>
+</body>
+</html>

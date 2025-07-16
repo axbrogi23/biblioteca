@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Libro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <!-- Modal de Detalles del Libro -->
+    <div id="book-details-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-book-title">Título del Libro</h2>
+                <button class="close-modal" onclick="closeBookModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="book-info-main">
+                    <div class="book-image-container">
+                        <img id="modal-book-image" src="" alt="Portada del libro">
+                        <div class="book-availability">
+                            <span id="availability-status" class="available">Disponible</span>
+                        </div>
+                    </div>
+                    
+                    <div class="book-details">
+                        <div class="book-rating">
+                            <div class="rating-display">
+                                <span class="star-rating" id="modal-rating">★★★★☆</span>
+                                <span class="rating-score" id="modal-rating-score">4.2</span>
+                                <span class="rating-count" id="modal-rating-count">(18 reseñas)</span>
+                            </div>
+                            <div class="user-rating">
+                                <span>Tu calificación:</span>
+                                <div class="rating-stars" id="user-rating-stars">
+                                    <span class="star" data-rating="1">★</span>
+                                    <span class="star" data-rating="2">★</span>
+                                    <span class="star" data-rating="3">★</span>
+                                    <span class="star" data-rating="4">★</span>
+                                    <span class="star" data-rating="5">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="book-info">
+                            <div class="info-item">
+                                <strong>Autor:</strong> <span id="modal-author">Autor</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Género:</strong> <span id="modal-genre">Género</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Tipo:</strong> <span id="modal-type">Tipo</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Precio:</strong> <span id="modal-price">$0.00</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Páginas:</strong> <span id="modal-pages">250</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Idioma:</strong> <span id="modal-language">Español</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="book-description">
+                    <h3>Descripción</h3>
+                    <p id="modal-description">Descripción del libro...</p>
+                </div>
+                
+                <div class="book-reviews">
+                    <h3>Reseñas recientes</h3>
+                    <div id="reviews-container">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">María García</span>
+                                <span class="review-rating">★★★★★</span>
+                                <span class="review-date">hace 2 días</span>
+                            </div>
+                            <p class="review-text">Excelente libro, muy recomendado. La historia es cautivadora y los personajes están muy bien desarrollados.</p>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Carlos Ruiz</span>
+                                <span class="review-rating">★★★★☆</span>
+                                <span class="review-date">hace 1 semana</span>
+                            </div>
+                            <p class="review-text">Buen libro, aunque el final me dejó con ganas de más. La escritura es fluida y entretenida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button id="modal-follow-btn" class="btn-secondary">Seguir</button>
+                <button id="modal-reserve-btn" class="btn-primary">Reservar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openBookModal(bookId) {
+            const modal = document.getElementById('book-details-modal');
+            const book = getBookById(bookId);
+            
+            if (book) {
+                populateBookModal(book);
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeBookModal() {
+            const modal = document.getElementById('book-details-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function populateBookModal(book) {
+            document.getElementById('modal-book-title').textContent = book.title;
+            document.getElementById('modal-book-image').src = book.imgSrc;
+            document.getElementById('modal-author').textContent = book.author;
+            document.getElementById('modal-genre').textContent = book.genre;
+            document.getElementById('modal-type').textContent = book.type;
+            document.getElementById('modal-price').textContent = `$${book.price}`;
+            document.getElementById('modal-description').textContent = book.description;
+            
+            // Actualizar calificación
+            updateModalRating(book.id);
+            
+            // Configurar botones
+            setupModalButtons(book);
+        }
+        
+        function updateModalRating(bookId) {
+            const userRating = getUserRatingForBook(bookId);
+            const averageRating = getAverageRatingForBook(bookId);
+            
+            // Actualizar estrellas del usuario
+            const userStars = document.querySelectorAll('#user-rating-stars .star');
+            userStars.forEach((star, index) => {
+                star.classList.toggle('active', index < userRating);
+            });
+            
+            // Actualizar calificación promedio
+            document.getElementById('modal-rating-score').textContent = averageRating.toFixed(1);
+            updateStarDisplay(averageRating);
+        }
+        
+        function setupModalButtons(book) {
+            const followBtn = document.getElementById('modal-follow-btn');
+            const reserveBtn = document.getElementById('modal-reserve-btn');
+            
+            followBtn.textContent = isBookFollowed(book.id) ? 'Dejar de seguir' : 'Seguir';
+            
+            followBtn.onclick = () => {
+                toggleFollowBook(book);
+                followBtn.textContent = isBookFollowed(book.id) ? 'Dejar de seguir' : 'Seguir';
+            };
+            
+            reserveBtn.onclick = () => {
+                populateFacturacionScreen(book);
+                closeBookModal();
+                navigateTo('pantalla-facturacion');
+            };
+        }
+        
+        // Event listeners para calificación
+        document.addEventListener('DOMContentLoaded', () => {
+            const userRatingStars = document.querySelectorAll('#user-rating-stars .star');
+            userRatingStars.forEach(star => {
+                star.addEventListener('click', (e) => {
+                    const rating = parseInt(e.target.dataset.rating);
+                    const bookId = getCurrentBookId();
+                    setUserRating(bookId, rating);
+                    updateModalRating(bookId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

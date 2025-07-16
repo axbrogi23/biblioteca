@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Soporte - Letras y Sueños</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            margin: 0;
+            padding: 20px;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        .message.agent {
+            background-color: #e3f2fd;
+            margin-right: auto;
+        }
+        .message.user {
+            background-color: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+        .chat-input {
+            display: flex;
+            padding: 20px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>💬 Chat de Soporte</h2>
+            <p>Estamos aquí para ayudarte</p>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message agent">
+                ¡Hola! Soy Ana, tu asistente de soporte. ¿En qué puedo ayudarte hoy?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Escribe tu mensaje...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+    
+    <a href="ayuda.html" class="back-link">← Volver a ayuda</a>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const messages = document.getElementById('chat-messages');
+            
+            if (input.value.trim() !== '') {
+                // Agregar mensaje del usuario
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user';
+                userMessage.textContent = input.value;
+                messages.appendChild(userMessage);
+                
+                // Limpiar input
+                input.value = '';
+                
+                // Scroll automático
+                messages.scrollTop = messages.scrollHeight;
+                
+                // Simular respuesta del agente después de 2 segundos
+                setTimeout(() => {
+                    const agentMessage = document.createElement('div');
+                    agentMessage.className = 'message agent';
+                    agentMessage.textContent = 'Gracias por tu mensaje. Un agente te responderá pronto.';
+                    messages.appendChild(agentMessage);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 2000);
+            }
+        }
+        
+        // Permitir enviar con Enter
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda Avanzada - Letras y Sueños</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <button onclick="window.history.back()">&lt;</button>
+            <h2>BÚSQUEDA AVANZADA</h2>
+        </header>
+        
+        <main class="search-advanced-main">
+            <div class="search-container">
+                <input type="search" id="advanced-search-input" placeholder="Buscar libros..." autocomplete="off">
+                <div id="search-suggestions" class="search-suggestions"></div>
+            </div>
+            
+            <div class="filters-container">
+                <h3>Filtros</h3>
+                
+                <div class="filter-group">
+                    <label for="genre-filter">Género:</label>
+                    <select id="genre-filter">
+                        <option value="">Todos los géneros</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Narrativa">Narrativa</option>
+                        <option value="Manga">Manga</option>
+                        <option value="No Ficción">No Ficción</option>
+                        <option value="Filosofía">Filosofía</option>
+                        <option value="Comedia">Comedia</option>
+                        <option value="Ensayo">Ensayo</option>
+                        <option value="Novela Clásica">Novela Clásica</option>
+                        <option value="Tragedia">Tragedia</option>
+                        <option value="Misterio">Misterio</option>
+                        <option value="Realismo Mágico">Realismo Mágico</option>
+                        <option value="Shonen">Shonen</option>
+                        <option value="Finanzas Personales">Finanzas Personales</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="type-filter">Tipo:</label>
+                    <select id="type-filter">
+                        <option value="">Todos los tipos</option>
+                        <option value="Narrativa">Narrativa</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Dramática">Dramática</option>
+                        <option value="Manga">Manga</option>
+                        <option value="No Ficción">No Ficción</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="price-filter">Precio máximo:</label>
+                    <input type="range" id="price-filter" min="0" max="20" step="0.50" value="20">
+                    <span id="price-value">$20.00</span>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="rating-filter">Calificación mínima:</label>
+                    <div class="rating-filter">
+                        <span class="star" data-rating="1">★</span>
+                        <span class="star" data-rating="2">★</span>
+                        <span class="star" data-rating="3">★</span>
+                        <span class="star" data-rating="4">★</span>
+                        <span class="star" data-rating="5">★</span>
+                    </div>
+                </div>
+                
+                <div class="filter-actions">
+                    <button id="clear-filters" class="btn-secondary">Limpiar filtros</button>
+                    <button id="apply-filters" class="btn-primary">Aplicar filtros</button>
+                </div>
+            </div>
+            
+            <div class="search-results">
+                <div class="results-header">
+                    <span id="results-count">0 resultados</span>
+                    <select id="sort-by">
+                        <option value="relevance">Relevancia</option>
+                        <option value="title">Título A-Z</option>
+                        <option value="price-low">Precio: menor a mayor</option>
+                        <option value="price-high">Precio: mayor a menor</option>
+                        <option value="rating">Mejor calificación</option>
+                    </select>
+                </div>
+                <div id="search-results-container" class="book-list-vertical"></div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="search.js"></script>
+    <script src="ratings.js"></script>
+</body>
+</html>
